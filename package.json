@@ -1,0 +1,27 @@
+{
+    "name": "18-social_network_api",
+    "description": "[![License](https://img.shields.io/badge/license-MIT-green)](./LICENSE)   # MongoDB Social Network API   ## Description 📋",
+    "version": "1.0.0",
+    "main": "node server.js",
+    
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/DylanCaff/18-Social-Network-API"
+    },
+    "author": "Dylan Cafferatta",
+    "license": "MIT",
+    "scripts": {
+      "start": "node server.js"
+    },
+  
+    "dependencies": {
+      "express": "^4.18.2",
+      "mongoose": "^7.1.0"
+     
+    },
+  
+    "devDependencies": {
+      "nodemon": "^2.0.22"
+    }
+   
+  }

@@ -15,16 +15,10 @@ router.route('/').get(getAllThoughts).post(createThought);
 
 
 router
-    .route('/:id')
-    .get(getThroughtID)
-    .put(updateThoughtByID)
-    .delete(deleteThoughtByID);
+    .route('/:id').get(getThroughtID).put(updateThoughtByID).delete(deleteThoughtByID);
 
 
-router
-    .routes('/:thoughtId/reactions')
-    .post(createReaction)
-    .delete(removeReaction);
+router.routes('/:thoughtId/reactions').post(createReaction).delete(removeReaction);
 
 
 router.route('/:thoughtId/reactions/:reactionId').delete(removeReaction);

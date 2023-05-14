@@ -26,6 +26,18 @@ module.exports = {
       res.status(500).json(err);
     });
   },
+  updateUserByID(req, res) {
+    User.findByIdAndUpdate(
+      { _id: req.params.id },
+      { $set: req.body },
+      { runValidators: true, new: true }
+    )
+      .then((user) => res.json(user))
+      .catch((err) => {
+        console.log(err);
+        res.status(500).json(err);
+      });
+  },
   deleteUserByID(req, res) {
     User.findByIdAndDelete(
       { _id: req.params.id },

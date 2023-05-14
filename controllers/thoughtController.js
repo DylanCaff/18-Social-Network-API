@@ -28,6 +28,14 @@ module.exports = {
             res.status(500).json(err);
         });
     },
+    getThoughtByID(req, res) {
+        Thought.findById(req.params.id)
+          .then((thought) => res.json(thought))
+          .catch((err) => {
+            console.log(err);
+            res.status(500).json(err);
+          });
+      },
     getAllThoughtByID(req, res) {
         Thought.findById(req.params.id)
          .then((thought) => res.json(thought))

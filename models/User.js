@@ -1,49 +1,50 @@
 const { Schema, model, Types } = require("mongoose");
 
 const userSchema = new Schema(
-    {
-        username: {
-            type: String,
-            unique: true,
-            required: true,
-            trim: true,
-        },
-        email : {
-            type: String,
-            uunique: true,
-            required: true,
-            trim: true,
-            validate:{ function (v) {
-                return /^([a-z0-9\.-_]+)@([a-z0-9\.-]+)\.([a-z\.]{2,6})$/.test(v);
-            },
-            message: (props) => `${props.value} is not a valid email`,
-          },
-        },
-        thoughts: [
-            {
-            type: Types.ObjectId,
-            ref: "Thought",
-            }
-        ],
-        friends: [
-            {
-            type: Types.ObjectId,
-            ref: "User",
-            },
-        ],
+  {
+    username: {
+      type: String,
+      unique: true,
+      required: true,
+      trim: true,
     },
-{
+    email: {
+        type: String,
+        unique: true,
+        required: true,
+        trim: true,
+        validate: {
+          validator: function(v) {
+            return /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/.test(v);
+          },
+          message: props => `${props.value} is not a valid email address.`
+        }
+      },
+    thoughts: [
+      {
+        type: Types.ObjectId,
+        ref: "Thought",
+      },
+    ],
+    friends: [
+      {
+        type: Types.ObjectId,
+        ref: "User",
+      },
+    ],
+  },
+  {
     toJSON: {
-        virtuals: true,
+      virtuals: true,
     },
     id: false,
-}
+  }
 );
 
 userSchema.virtual("friendCount").get(function () {
-    return this.friends.length;
+  return this.friends.length;
 });
 
-const User = model("user", userSchema);
+const User = model("User", userSchema);
 
 module.exports = User;

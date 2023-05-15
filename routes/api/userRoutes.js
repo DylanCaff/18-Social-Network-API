@@ -23,7 +23,7 @@ router
 
 
 router
-  .route('/:userId/friends/:friendId')
+  .route('/:id/friends/:friendId')
   .post(addNewFriend)
   .delete(removeFriend);
 module.exports = router;

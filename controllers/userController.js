@@ -3,6 +3,7 @@ const { Thought, User } = require('../models');
 
 module.exports = {
   createUser(req, res) {
+    console.log(req);
     User.create(req.body)
       .then((user) => res.json(user))
       .catch((err) => {
